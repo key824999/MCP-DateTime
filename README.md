@@ -1,10 +1,11 @@
 # MCP-DateTime
 
-**MCP-DateTime** is a Kotlin-based [Model Context Protocol (MCP)](https://modelcontextprotocol.io) compatible tool that provides a comprehensive suite of time, date, and timezone utilities.
+MCP-DateTime is a Kotlin-based [Model Context Protocol (MCP)](https://modelcontextprotocol.io) compatible tool that provides a comprehensive suite of time, date, and timezone utilities.
 
 It is designed to be used by any AI agent or tool host that supports the MCP specification.
 
 ### ⚡ Reliable, AI-friendly, and Precise
+
 MCP-DateTime is engineered for:
 
 - **Reliability**: Predictable behavior with full edge case coverage
@@ -15,7 +16,9 @@ MCP-DateTime is engineered for:
 
 ## Installation
 
-> Please refer to the [📄 llms-install.md](./llms-install.md) file for step-by-step installation instructions for Claude Desktop, MCP CLI, and more.
+> Please refer to the [llms-install.md](./llms-install.md) file for step-by-step installation instructions for Claude Desktop, MCP CLI, and more.
+
+---
 
 ## Features by Category
 
@@ -33,77 +36,71 @@ MCP-DateTime is engineered for:
 - `availableZoneIds()` – List of all zone IDs
 
 ### ➖ DateTimeCalcTool
-- `addDays(date, n)`, `subtractDays(...)`, `addMonths(...)`, `addYears(...)`
-- `addMinutes(...)`, `subtractHours(...)`, `subtractSeconds(...)`
-- `withStartOfDay(...)`, `withEndOfDay(...)`
-- `daysBetween(...)`, `hoursBetween(...)`, `minutesBetween(...)`, `secondsBetween(...)`, `millisBetween(...)`
-- `durationBetween(...)` – ISO duration string
-- `durationBreakdown(...)` – Map of days, hours, minutes, seconds
+- `addDays(dateIso, days)`, `subtractDays(dateIso, days)`
+- `addMonths(dateIso, months)`, `addYears(dateIso, years)`
+- `addMinutes(datetimeIso, minutes)`, `subtractHours(datetimeIso, hours)`, `subtractSeconds(datetimeIso, seconds)`
+- `withStartOfDay(dateIso)`, `withEndOfDay(dateIso)`
+- `daysBetween(startDateIso, endDateIso)`, `hoursBetween(startDateTimeIso, endDateTimeIso)`
+- `minutesBetween(startDateTimeIso, endDateTimeIso)`, `secondsBetween(startDateTimeIso, endDateTimeIso)`, `millisBetween(startDateTimeIso, endDateTimeIso)`
+- `durationBetween(startDateTimeIso, endDateTimeIso)` – ISO duration string
+- `durationBreakdown(startDateTimeIso, endDateTimeIso)` – Map of days, hours, minutes, seconds
 
 ### ⚖ DateTimeCompareTool
-- `isBefore(...)`, `isAfter(...)`, `isSameDay(...)`, `isBetween(...)`
-- `isSameMonth(...)`, `isSameYear(...)`
-- `isToday(...)`, `isFutureDate(...)`, `isPastDate(...)`
+- `isBefore(date1, date2)`, `isAfter(date1, date2)`
+- `isSameDay(date1, date2)`, `isBetween(target, start, end)`
+- `isSameMonth(date1, date2)`, `isSameYear(date1, date2)`
+- `isToday(dateIso)`, `isFutureDate(dateIso)`, `isPastDate(dateIso)`
 - `isLeapYear(year)`
-- `isWeekend(dateStr)` / `isWeekday(...)`
-- `isWeekendDay(dayName)` / `isBusinessDay(dateStr)`
+- `isWeekend(dateIso)`, `isWeekday(dateIso)`
+- `isWeekendDay(dayName)`, `isBusinessDay(dateIso)`
 - `isAmNow()`, `isPmNow()`
 - `isValidDateFormat(dateStr, pattern)`
 
-### 🕐 DateTimeDayTool
-- `getDayOfWeek(date)`, `getTodayDayOfWeek()`
-- `getDayOfWeekIndex(...)`, `getTodayDayIndex()`
+### 📅 DateTimeDayTool
+- `getDayOfWeek(dateIso)`, `getTodayDayOfWeek()`
+- `getDayOfWeekIndex(dateIso)`, `getTodayDayIndex()`
 - `isWeekendDay(dayName)`, `isWeekday(dayName)`
-- `isWeekendDate(date)`
-- `normalizeDayName(...)`
-- `dayNameToIndex(...)`, `indexToDayName(...)`
+- `isWeekendDate(dateIso)`
+- `normalizeDayName(dayName)`, `dayNameToIndex(dayName)`, `indexToDayName(index)`
 - `getDayAfterToday(offset)`
 
-### 📅 DateTimeMonthTool
-- `getStartOfMonth(date)`, `getEndOfMonth(date)`
+### 🗓 DateTimeMonthTool
+- `getStartOfMonth(dateIso)`, `getEndOfMonth(dateIso)`
 - `getStartOfCurrentMonth()`, `getEndOfCurrentMonth()`
-- `isEndOfMonth(date)`
-- `getAllDatesInMonth(date)`
-- `getLengthOfMonth(date)`
-- `getWeekCountInMonth(date)`
-- `isSameMonth(a, b)`
-- `getEndOfPreviousMonth(date)`
-- `getStartOfNextMonth(date)`
-- `addMonths(...)`
-- `getSpecificDayInMonth(date, day)`
+- `getStartOfNextMonth(dateIso)`, `getEndOfPreviousMonth(dateIso)`
+- `getSpecificDayInMonth(dateIso, day)`
+- `getLengthOfMonth(dateIso)`
+- `getWeekCountInMonth(dateIso)`
+- `getAllDatesInMonth(dateIso)`
+- `isEndOfMonth(dateIso)`
+- `isSameMonth(date1, date2)`
+
+### 🧾 DateTimeFormatTool
+- `formatLocalDate(dateIso, pattern)`
+- `formatLocalDateTime(datetimeIso, pattern)`
+- `formatWithLocale(dateTimeIso, pattern, localeTag)`
+- `parseToIso(datetime, pattern)`, `safeParseToIso(datetime, pattern)`
+- `parseDayOfWeek(dateIso)`
+- `isValidDateFormat(dateStr, pattern)`
 
 ### 📆 DateTimeWeekTool
-- `getWeekOfYear(date)`, `getCurrentWeekOfYear()`
-- `getStartOfWeek(date)`, `getEndOfWeek(date)`
-- `isSameWeek(a, b)`
-- `getWeekdayOfFirstDay(date)`
-- `getAllDatesOfWeek(date)`
-- `getStartOfWeekByNumber(week, year)`
-- `getEndOfWeekByNumber(...)`
-- `getDateFromWeekAndDay(...)`
-- `isEvenWeek(date)`, `isLastWeekOfMonth(date)`
+- `getStartOfWeek(dateIso)`, `getEndOfWeek(dateIso)`
+- `getStartOfWeekByNumber(week, year)`, `getEndOfWeekByNumber(week, year)`
+- `getDateFromWeekAndDay(week, year, weekdayIndex)`
+- `getAllDatesOfWeek(dateIso)`
+- `getWeekOfYear(dateIso)`, `getCurrentWeekOfYear()`
+- `getWeekdayOfFirstDay(dateIso)`
+- `isEvenWeek(dateIso)`, `isLastWeekOfMonth(dateIso)`
+- `isSameWeek(dateIso1, dateIso2)`
 
 ### 🌐 DateTimeZoneTool
 - `convertZone(datetimeIso, fromZone, toZone)`
-- `toUtc(...)`, `toKst(...)`
+- `toUtc(datetimeIso, fromZone)`
 - `utcNowToZone(zoneId)`
-- `getZoneOffset(zoneId)`
-- `zoneOffsetDiff(zoneA, zoneB)`
-- `isValidZoneId(zoneId)`
-- `isDstActive(zoneId)`
-- `nowInZone(zoneId)`
-- `todayInZone(zoneId)`
+- `getZoneOffset(zoneId)`, `zoneOffsetDiff(zoneId1, zoneId2)`
 - `timeInZone(zoneId)`
-
-### 🔄 DateTimeFormatTool
-- `formatLocalDateTime(iso, pattern)`
-- `formatLocalDate(iso, pattern)`
-- `parseToIso(datetimeStr, pattern)`
-- `safeParseToIso(...)`
-- `parseDayOfWeek(dateIso)`
-- `isValidDateFormat(dateStr, pattern)`
-- `convertIsoToFormat(iso, pattern)`
-- `formatWithLocale(datetimeIso, pattern, locale)`
+- `isDstActive(zoneId)`
+- `isValidZoneId(zoneId)`
 
 > ℹ️ All functions are annotated with `@Tool` and can be auto-discovered by any compliant MCP host at runtime.
 
