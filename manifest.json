@@ -1,0 +1,575 @@
+{
+  "tool_name" : "MCP-DateTime",
+  "version" : "0.0.1",
+  "description" : "A Kotlin-based MCP-compatible tool that provides time utilities such as formatting, parsing, date calculation, and timezone conversion.",
+  "entrypoint" : {
+    "command" : "java",
+    "args" : [ "-jar", "./libs/MCP-DateTime-0.0.1-SNAPSHOT.jar" ]
+  },
+  "actions" : [ {
+    "name" : "addDays",
+    "description" : "Adds the given number of days to the ISO date string",
+    "parameters" : {
+      "dateIso" : "string",
+      "days" : "number"
+    }
+  }, {
+    "name" : "addMinutes",
+    "description" : "Adds the given number of minutes to the ISO date-time string",
+    "parameters" : {
+      "datetimeIso" : "string",
+      "minutes" : "number"
+    }
+  }, {
+    "name" : "addMonths",
+    "description" : "Adds the given number of months to the ISO date string",
+    "parameters" : {
+      "dateIso" : "string",
+      "months" : "number"
+    }
+  }, {
+    "name" : "addYears",
+    "description" : "Adds the given number of years to the ISO date string",
+    "parameters" : {
+      "dateIso" : "string",
+      "years" : "number"
+    }
+  }, {
+    "name" : "daysBetween",
+    "description" : "Calculates the number of days between two ISO dates",
+    "parameters" : {
+      "startDateIso" : "string",
+      "endDateIso" : "string"
+    }
+  }, {
+    "name" : "durationBetween",
+    "description" : "Returns the duration between two ISO date-times as a string (e.g., PT5H30M)",
+    "parameters" : {
+      "startDateTimeIso" : "string",
+      "endDateTimeIso" : "string"
+    }
+  }, {
+    "name" : "durationBreakdown",
+    "description" : "Returns a breakdown of the duration between two ISO date-times (days, hours, minutes, seconds)",
+    "parameters" : {
+      "startDateTimeIso" : "string",
+      "endDateTimeIso" : "string"
+    }
+  }, {
+    "name" : "hoursBetween",
+    "description" : "Calculates the number of hours between two ISO date-times",
+    "parameters" : {
+      "startDateTimeIso" : "string",
+      "endDateTimeIso" : "string"
+    }
+  }, {
+    "name" : "millisBetween",
+    "description" : "Calculates the number of milliseconds between two ISO date-times",
+    "parameters" : {
+      "startDateTimeIso" : "string",
+      "endDateTimeIso" : "string"
+    }
+  }, {
+    "name" : "minutesBetween",
+    "description" : "Calculates the number of minutes between two ISO date-times",
+    "parameters" : {
+      "startDateTimeIso" : "string",
+      "endDateTimeIso" : "string"
+    }
+  }, {
+    "name" : "secondsBetween",
+    "description" : "Calculates the number of seconds between two ISO date-times",
+    "parameters" : {
+      "startDateTimeIso" : "string",
+      "endDateTimeIso" : "string"
+    }
+  }, {
+    "name" : "subtractDays",
+    "description" : "Subtracts the given number of days from the ISO date string",
+    "parameters" : {
+      "dateIso" : "string",
+      "days" : "number"
+    }
+  }, {
+    "name" : "subtractHours",
+    "description" : "Subtracts the given number of hours from the ISO date-time string",
+    "parameters" : {
+      "datetimeIso" : "string",
+      "hours" : "number"
+    }
+  }, {
+    "name" : "subtractSeconds",
+    "description" : "Subtracts the given number of seconds from the ISO date-time string",
+    "parameters" : {
+      "datetimeIso" : "string",
+      "seconds" : "number"
+    }
+  }, {
+    "name" : "withEndOfDay",
+    "description" : "Returns the end of day (23:59:59.999999999) for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "withStartOfDay",
+    "description" : "Returns the start of day (00:00:00) for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isAfter",
+    "description" : "Returns true if the first ISO date is after the second one",
+    "parameters" : {
+      "date1" : "string",
+      "date2" : "string"
+    }
+  }, {
+    "name" : "isAmNow",
+    "description" : "Returns true if the current UTC time is before 12:00 (AM)",
+    "parameters" : { }
+  }, {
+    "name" : "isBefore",
+    "description" : "Returns true if the first ISO date is before the second one",
+    "parameters" : {
+      "date1" : "string",
+      "date2" : "string"
+    }
+  }, {
+    "name" : "isBetween",
+    "description" : "Returns true if the given ISO date is between start and end (inclusive)",
+    "parameters" : {
+      "target" : "string",
+      "start" : "string",
+      "end" : "string"
+    }
+  }, {
+    "name" : "isBusinessDay",
+    "description" : "Returns true if the given ISO date is a weekday (Mon-Fri). Currently only supports weekends, not holidays.",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isFutureDate",
+    "description" : "Returns true if the given ISO date is in the future (after today, UTC)",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isLeapYear",
+    "description" : "Returns true if the given year is a leap year",
+    "parameters" : {
+      "year" : "number"
+    }
+  }, {
+    "name" : "isPastDate",
+    "description" : "Returns true if the given ISO date is in the past (before today, UTC)",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isPmNow",
+    "description" : "Returns true if the current UTC time is 12:00 or later (PM)",
+    "parameters" : { }
+  }, {
+    "name" : "isSameDay",
+    "description" : "Returns true if two ISO dates are the same day",
+    "parameters" : {
+      "date1" : "string",
+      "date2" : "string"
+    }
+  }, {
+    "name" : "isSameMonth",
+    "description" : "Returns true if two ISO dates are in the same month and year",
+    "parameters" : {
+      "date1" : "string",
+      "date2" : "string"
+    }
+  }, {
+    "name" : "isSameYear",
+    "description" : "Returns true if two ISO dates are in the same year",
+    "parameters" : {
+      "date1" : "string",
+      "date2" : "string"
+    }
+  }, {
+    "name" : "isToday",
+    "description" : "Returns true if the given ISO date is today in UTC",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isValidDate",
+    "description" : "Returns true if the given date string is valid according to the given pattern (e.g., yyyy-MM-dd)",
+    "parameters" : {
+      "dateStr" : "string",
+      "pattern" : "string"
+    }
+  }, {
+    "name" : "isWeekend",
+    "description" : "Returns true if the given ISO date is a weekend (Saturday or Sunday)",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "dayNameToIndex",
+    "description" : "Converts a day name to its index (0=Monday, 6=Sunday)",
+    "parameters" : {
+      "dayName" : "string"
+    }
+  }, {
+    "name" : "getDayAfterToday",
+    "description" : "Returns the day of the week N days after today (e.g., MONDAY)",
+    "parameters" : {
+      "offset" : "number"
+    }
+  }, {
+    "name" : "getDayOfWeek",
+    "description" : "Returns the day of the week (e.g., MONDAY) for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getDayOfWeekIndex",
+    "description" : "Returns the index of the day of week for the given ISO date (0=Monday, 6=Sunday)",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getTodayDayIndex",
+    "description" : "Returns the index of today's day of week (0=Monday, 6=Sunday)",
+    "parameters" : { }
+  }, {
+    "name" : "getTodayDayOfWeek",
+    "description" : "Returns the current day of the week (UTC) as a string (e.g., TUESDAY)",
+    "parameters" : { }
+  }, {
+    "name" : "indexToDayName",
+    "description" : "Converts an index (0=Monday, 6=Sunday) to the corresponding day name",
+    "parameters" : {
+      "index" : "number"
+    }
+  }, {
+    "name" : "isWeekday",
+    "description" : "Returns true if the given day name is a weekday (Monday to Friday)",
+    "parameters" : {
+      "dayName" : "string"
+    }
+  }, {
+    "name" : "isWeekendDate",
+    "description" : "Returns true if the given ISO date falls on a weekend (Saturday or Sunday)",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isWeekendDay",
+    "description" : "Returns true if the given day name is a weekend (SATURDAY or SUNDAY)",
+    "parameters" : {
+      "dayName" : "string"
+    }
+  }, {
+    "name" : "normalizeDayName",
+    "description" : "Normalizes a day name string to a standard DayOfWeek enum (e.g., Mon -> MONDAY)",
+    "parameters" : {
+      "dayName" : "string"
+    }
+  }, {
+    "name" : "formatLocalDate",
+    "description" : "Formats the given LocalDate ISO string using the given pattern (e.g., MM-dd-yyyy)",
+    "parameters" : {
+      "dateIso" : "string",
+      "pattern" : "string"
+    }
+  }, {
+    "name" : "formatLocalDateTime",
+    "description" : "Formats the given LocalDateTime ISO string using the given pattern (e.g., yyyy/MM/dd HH:mm)",
+    "parameters" : {
+      "datetimeIso" : "string",
+      "pattern" : "string"
+    }
+  }, {
+    "name" : "formatWithLocale",
+    "description" : "Formats the given ISO date-time string using the given pattern and locale (e.g., en-US, fr-FR)",
+    "parameters" : {
+      "dateTimeIso" : "string",
+      "pattern" : "string",
+      "localeTag" : "string"
+    }
+  }, {
+    "name" : "isValidDateFormat",
+    "description" : "Checks if the given date string is valid with the given pattern (e.g., 2025/04/17 with yyyy/MM/dd)",
+    "parameters" : {
+      "dateStr" : "string",
+      "pattern" : "string"
+    }
+  }, {
+    "name" : "parseDayOfWeek",
+    "description" : "Parses the given ISO date string to a LocalDate and returns the day of week (e.g., MONDAY)",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "parseToIso",
+    "description" : "Parses the given date-time string with the given pattern into ISO-8601 format",
+    "parameters" : {
+      "datetime" : "string",
+      "pattern" : "string"
+    }
+  }, {
+    "name" : "safeParseToIso",
+    "description" : "Safely parses the date-time string using the given pattern. Returns null if parsing fails.",
+    "parameters" : {
+      "datetime" : "string",
+      "pattern" : "string"
+    }
+  }, {
+    "name" : "getAllDatesInMonth",
+    "description" : "Returns a list of all ISO dates in the month of the given date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getEndOfCurrentMonth",
+    "description" : "Returns the last day of the current month (UTC)",
+    "parameters" : { }
+  }, {
+    "name" : "getEndOfMonth",
+    "description" : "Returns the last day of the month for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getEndOfPreviousMonth",
+    "description" : "Returns the last day of the previous month for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getLengthOfMonth",
+    "description" : "Returns the number of days in the month of the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getSpecificDayInMonth",
+    "description" : "Returns the ISO date of a specific day in the same month as the given date (e.g., 15th)",
+    "parameters" : {
+      "dateIso" : "string",
+      "day" : "number"
+    }
+  }, {
+    "name" : "getStartOfCurrentMonth",
+    "description" : "Returns the first day of the current month (UTC)",
+    "parameters" : { }
+  }, {
+    "name" : "getStartOfMonth",
+    "description" : "Returns the first day of the month for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getStartOfNextMonth",
+    "description" : "Returns the first day of the next month for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getWeekCountInMonth",
+    "description" : "Returns the number of ISO weeks in the month of the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isEndOfMonth",
+    "description" : "Returns true if the given ISO date is the last day of its month",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "availableZoneIds",
+    "description" : "Returns a list of all available zone IDs supported by the JVM",
+    "parameters" : { }
+  }, {
+    "name" : "currentEpochMillis",
+    "description" : "Returns the current epoch time in milliseconds",
+    "parameters" : { }
+  }, {
+    "name" : "currentEpochSeconds",
+    "description" : "Returns the current epoch time in seconds",
+    "parameters" : { }
+  }, {
+    "name" : "currentTimePartsUtc",
+    "description" : "Returns current UTC time components (hour, minute, second, dayOfWeek)",
+    "parameters" : { }
+  }, {
+    "name" : "currentUtcOffset",
+    "description" : "Returns the UTC offset for the given zone ID (e.g., +09:00)",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "dayOfYearUtc",
+    "description" : "Returns the current day of the year (1 to 365 or 366) in UTC",
+    "parameters" : { }
+  }, {
+    "name" : "nowFormatted",
+    "description" : "Returns the current date and time formatted using the given pattern (e.g., yyyy/MM/dd HH:mm)",
+    "parameters" : {
+      "pattern" : "string"
+    }
+  }, {
+    "name" : "nowInZone",
+    "description" : "Returns the current time in the specified time zone in ISO-8601 format (e.g., Asia/Seoul)",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "nowUtcIso",
+    "description" : "Returns the current time in UTC in ISO-8601 format (e.g., 2025-04-17T02:25:00Z)",
+    "parameters" : { }
+  }, {
+    "name" : "nowUtcZoned",
+    "description" : "Returns the current UTC ZonedDateTime object as a string",
+    "parameters" : { }
+  }, {
+    "name" : "todayInZone",
+    "description" : "Returns the current date in the given time zone in ISO format (yyyy-MM-dd)",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "todayIso",
+    "description" : "Returns the current date in UTC in ISO format (yyyy-MM-dd)",
+    "parameters" : { }
+  }, {
+    "name" : "weekOfYearUtc",
+    "description" : "Returns the current ISO week number of the year (UTC)",
+    "parameters" : { }
+  }, {
+    "name" : "getAllDatesOfWeek",
+    "description" : "Returns a list of ISO date strings for all days in the week that includes the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getCurrentWeekOfYear",
+    "description" : "Returns the current ISO week number of the year",
+    "parameters" : { }
+  }, {
+    "name" : "getDateFromWeekAndDay",
+    "description" : "Returns the ISO date for a given ISO week number, year, and weekday index (0=Monday, 6=Sunday)",
+    "parameters" : {
+      "week" : "number",
+      "year" : "number",
+      "weekdayIndex" : "number"
+    }
+  }, {
+    "name" : "getEndOfWeek",
+    "description" : "Returns the end date (Sunday) of the week for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getEndOfWeekByNumber",
+    "description" : "Returns the end date (Sunday) of the given ISO week number and year",
+    "parameters" : {
+      "week" : "number",
+      "year" : "number"
+    }
+  }, {
+    "name" : "getStartOfWeek",
+    "description" : "Returns the start date (Monday) of the week for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getStartOfWeekByNumber",
+    "description" : "Returns the start date (Monday) of the given ISO week number and year",
+    "parameters" : {
+      "week" : "number",
+      "year" : "number"
+    }
+  }, {
+    "name" : "getWeekOfYear",
+    "description" : "Returns the ISO week number (1–53) of the year for the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "getWeekdayOfFirstDay",
+    "description" : "Returns the day of the week for the first day of the week that includes the given ISO date",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isEvenWeek",
+    "description" : "Returns true if the ISO week number of the given ISO date is even",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isLastWeekOfMonth",
+    "description" : "Returns true if the given ISO date falls in the last ISO week of its month",
+    "parameters" : {
+      "dateIso" : "string"
+    }
+  }, {
+    "name" : "isSameWeek",
+    "description" : "Returns true if the two dates fall in the same ISO week of the year",
+    "parameters" : {
+      "dateIso1" : "string",
+      "dateIso2" : "string"
+    }
+  }, {
+    "name" : "convertZone",
+    "description" : "Converts the given ISO date-time from the source time zone to the target time zone",
+    "parameters" : {
+      "datetimeIso" : "string",
+      "fromZone" : "string",
+      "toZone" : "string"
+    }
+  }, {
+    "name" : "getZoneOffset",
+    "description" : "Returns the current UTC offset of the given time zone (e.g., +09:00)",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "isDstActive",
+    "description" : "Returns true if the given time zone is currently in daylight saving time (DST)",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "isValidZoneId",
+    "description" : "Checks whether the given time zone ID is valid",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "timeInZone",
+    "description" : "Returns the current local time in the given time zone (HH:mm:ss)",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "toUtc",
+    "description" : "Converts the given ISO date-time from the source time zone to UTC",
+    "parameters" : {
+      "datetimeIso" : "string",
+      "fromZone" : "string"
+    }
+  }, {
+    "name" : "utcNowToZone",
+    "description" : "Converts the current UTC time to the given time zone (ISO-8601 format)",
+    "parameters" : {
+      "zoneId" : "string"
+    }
+  }, {
+    "name" : "zoneOffsetDiff",
+    "description" : "Returns the hour difference between two time zones at the current time",
+    "parameters" : {
+      "zoneId1" : "string",
+      "zoneId2" : "string"
+    }
+  } ]
+}

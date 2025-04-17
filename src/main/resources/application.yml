@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: MCP-DateTime
+  main:
+    banner-mode: off
