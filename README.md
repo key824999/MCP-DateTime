@@ -10,7 +10,7 @@ MCP-DateTime is engineered for:
 
 - **Reliability**: Predictable behavior with full edge case coverage
 - **Precision**: ISO-8601 compliant datetime formatting and parsing
-- **AI usability**: All methods are well-named and MCP-discoverable for seamless integration
+- **AI usability**: All methods are clearly named and MCP-discoverable for seamless AI integration
 
 ---
 

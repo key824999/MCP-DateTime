@@ -8,6 +8,18 @@ plugins {
 group = "mcp"
 version = "0.0.1-SNAPSHOT"
 
+kotlin {
+    jvmToolchain(21)
+    compilerOptions {
+        freeCompilerArgs.set(
+            listOf(
+                "-Xjsr305=strict",
+                "-Xcontext-receivers"
+            )
+        )
+    }
+}
+
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
@@ -28,12 +40,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-kotlin {
-    compilerOptions {
-        freeCompilerArgs.addAll(listOf("-Xjsr305=strict"))
-    }
 }
 
 tasks.withType<Test> {
